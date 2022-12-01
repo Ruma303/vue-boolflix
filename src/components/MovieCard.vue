@@ -2,7 +2,8 @@
   <div class="col mb-3">
     <div class="container-card card content text-center" style="width: 18rem;">
       <!-- <img :src="poster" :alt="title" class="figure-img img-fluid p-4"> -->
-      <ul class="card-body">
+      <!-- RENDERING CARDS DEI FILM -->
+      <ul class="card-body" v-if="title">
         <li class="card-title card-text">
           Titolo: {{title}}</li>
         <li class="card-o-title card-text">
@@ -12,7 +13,8 @@
         <li class="card-vote card-text">
           Voto: {{vote_average}}</li>
       </ul>
-      <ul class="card-body">
+      <!-- RENDERING CARDS DELLE SERIE TV -->
+      <ul class="card-body" v-else>
         <li class="card-title card-text">
           Titolo: {{name}}</li>
         <li class="card-o-title card-text">
@@ -30,8 +32,6 @@
 export default {
   name: 'MovieCard',
   props: {
-    arrMovies: Array,
-    arrSeries: Array,
     title: String,
     original_title: String,
     original_language: String,
@@ -39,28 +39,28 @@ export default {
     name: String,
     original_name: String,
   },
-  data() {
-    return {
-      flag: '',
-      renderMovies: [],
-      renderSeries: [],
-    };
-  },
   methods: {
     changeLang() {
       this.flag = this.original_language;
     },
   },
-  watch: {
-    arrMovies(newValue) {
-      console.log('arrMovies watch triggerata', +newValue);
-      this.$emit('moviesReady', newValue);
-    },
-    arrSeries(newValue) {
-      console.log('arrMovies watch triggerata', +newValue);
-      this.$emit('seriesReady', newValue);
-    },
-  },
+  // data() {
+  //   return {
+  //     flag: '',
+  //     renderMovies: [],
+  //     renderSeries: [],
+  //   };
+  // },
+  // watch: {
+  //   arrMovies(newValue) {
+  //     console.log('arrMovies watch triggerata', +newValue);
+  //     this.$emit('moviesReady', newValue);
+  //   },
+  //   arrSeries(newValue) {
+  //     console.log('arrMovies watch triggerata', +newValue);
+  //     this.$emit('seriesReady', newValue);
+  //   },
+  // },
 };
 </script>
 

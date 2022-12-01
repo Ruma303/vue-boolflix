@@ -5,7 +5,6 @@
       <h1 v-if="arrMovies.length">Film</h1>
       <MovieCard v-for="objMovie in arrMovies"
       :arr-movies="arrMovies"
-      @moviesReady="moviesInfo"
       :key="objMovie.id"
       :title="objMovie.title"
       :original_title="objMovie.original_title"
@@ -13,7 +12,8 @@
       :original_language="objMovie.original_language"
       />
     </div>
-</template>
+  </template>
+    <!-- @moviesReady="moviesInfo" -->
 
 <script>
 import MovieCard from './MovieCard.vue';
@@ -26,16 +26,16 @@ export default {
   props: {
     arrMovies: Array,
   },
-  data() {
-    return {
-      moviesReady: [],
-    };
-  },
-  methods: {
-    moviesInfo(cardInfo) {
-      this.cardInfo = cardInfo;
-    },
-  },
+  //  data() {
+  //   return {
+  //     moviesReady: [],
+  //   };
+  // },
+  // methods: {
+  //   moviesInfo(cardInfo) {
+  //     this.moviesReady = cardInfo;
+  //   },
+  // },
 };
 </script>
 

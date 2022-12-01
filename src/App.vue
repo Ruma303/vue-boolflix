@@ -40,7 +40,7 @@ export default {
       })
         .then((axiosResponse) => {
           this.arrMovies = axiosResponse.data.results;
-          console.log(this.arrMovies);
+          // console.log(this.arrMovies);
         });
       axios.get(`${this.urlApi}/search/tv`, {
         params: {
@@ -51,7 +51,7 @@ export default {
       })
         .then((axiosResponse) => {
           this.arrSeries = axiosResponse.data.results;
-          console.log(this.arrSeries);
+          // console.log(this.arrSeries);
         });
     },
   },
