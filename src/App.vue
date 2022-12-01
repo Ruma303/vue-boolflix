@@ -1,7 +1,8 @@
 <template>
   <div>
-    <HeaderPage />
-    <MainPage />
+    <HeaderPage @queryChange="search"/>
+    <MainPage :propArrMovies="arrMovies"
+    :propArrSeries="arrSeries"/>
   </div>
 </template>
 
@@ -18,24 +19,44 @@ export default {
   },
   data() {
     return {
-      urlApi: 'https://api.themoviedb.org/3/movie/550?api_key=2ae73c2a516d5dc0685dd21989f5bc01',
-      arrObj: null, // array di tutti gli oggetti
-      arrMovies: null,
-      arrSeries: null,
+      urlApi: 'https://api.themoviedb.org/3',
+      apiKey: '2ae73c2a516d5dc0685dd21989f5bc01',
       lang: 'it-IT',
-      key: '2ae73c2a516d5dc0685dd21989f5bc01',
+      arrMovies: [],
+      arrSeries: [],
     };
   },
-  created() {
-    axios.get(this.urlApi)
-      .then((axiosResponse) => {
-        console.log(axiosResponse);
-        this.arrObj = axiosResponse.data.response;
-      });
+  methods: {
+    search(queryStr) {
+      // chiamata axios
+      axios.get(`${this.urlApi}/search/movie`, {
+        params: {
+          api_key: this.apiKey,
+          query: queryStr,
+          language: this.lang,
+        },
+      })
+        .then((axiosResponse) => {
+          this.arrMovies = axiosResponse.data.results;
+          console.log(this.arrMovies);
+        });
+      axios.get(`${this.urlApi}/search/tv`, {
+        params: {
+          api_key: this.apiKey,
+          query: queryStr,
+          language: this.lang,
+        },
+      })
+        .then((axiosResponse) => {
+          this.arrSeries = axiosResponse.data.results;
+          console.log(this.arrSeries);
+        });
+    },
   },
 };
 </script>
 
 <style lang="scss">
 @import '~bootstrap/scss/bootstrap';
+@import '@/assets/scss/reset';
 </style>
