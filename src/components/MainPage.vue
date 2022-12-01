@@ -2,35 +2,24 @@
   <div>
     <main class="container-fluid m-0 p-3 d-flex justify-content-center aling-items-center">
       <div class="films-container">
-        <MovieCard />
+        <FilmList />
       </div>
       <div class="shows-container">
-        <MovieCard />
+        <SeriesList />
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import MovieCard from './MovieCard.vue';
+import SeriesList from './SeriesList.vue';
+import FilmList from './FilmList.vue';
 
 export default {
   name: 'MainPage',
   components: {
-    MovieCard,
-  },
-  data() {
-    return {
-      urlApi: 'https://api.themoviedb.org/3',
-      arrObj: null, // array di tutti gli oggetti
-      arrFilms: [],
-      arrSeries: [],
-    };
-  },
-  created() {
-    axios.get(this.urlApi)
-      .then((axiosResponse) => { this.arrObj = axiosResponse.data; });
+    SeriesList,
+    FilmList,
   },
 };
 </script>
