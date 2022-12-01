@@ -6,7 +6,7 @@
       <label for="input-search" class="d-flex justify-content-center aling-items-center">
         <input type="text"
         class="px-2"
-        placeholder="Ricerca..." id="input-search"
+        placeholder="Ricerca Film o Serie TV..." id="input-search"
         v-model="queryString">
         <button id="search-button">Cerca</button>
       </label>
@@ -37,5 +37,7 @@ export default {
 #search-button{
   background-color:red;
   color: white;
+  border:none;
+  padding:.2rem;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <div class="col">
+    <div class="row container-fluid
+      d-flex flex-wrap justify-content-center
+      aling-items-center gap-1 m-0 p-3">
       <h1 v-if="arrMovies.length">Film</h1>
       <MovieCard v-for="objMovie in arrMovies"
       :arr-movies="arrMovies"
@@ -12,7 +13,6 @@
       :original_language="objMovie.original_language"
       />
     </div>
-  </div>
 </template>
 
 <script>

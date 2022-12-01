@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="col">
-      <h1 v-if="arrSeries.length">Serie TV</h1>
-    </div>
+  <div class="row container-fluid
+    d-flex flex-wrap justify-content-center
+    aling-items-center gap-1 m-0">
+    <h1 v-if="arrSeries.length">Serie TV</h1>
     <MovieCard v-for="objTV in arrSeries"
     :arr-series="arrSeries"
     @seriesReady="seriesInfo"

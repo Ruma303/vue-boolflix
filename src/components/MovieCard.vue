@@ -1,6 +1,6 @@
 <template>
-  <div class="col">
-    <div class="card content text-center" style="width: 18rem;">
+  <div class="col mb-3">
+    <div class="container-card card content text-center" style="width: 18rem;">
       <!-- <img :src="poster" :alt="title" class="figure-img img-fluid p-4"> -->
       <ul class="card-body">
         <li class="card-title card-text">
@@ -65,4 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container-card{
+  height: 20rem;
+}
 </style>
