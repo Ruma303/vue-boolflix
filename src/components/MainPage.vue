@@ -2,6 +2,13 @@
   <div>
     <main class="container-fluid m-0 p-3 d-flex justify-content-center aling-items-center">
       <div class="films-container">
+        <ul key=""v-for="objMovie in arrMovies"
+        :key="objMovie.id">
+          <li>{{}}</li>
+          <li>{{}}</li>
+          <li>{{}}</li>
+          <li>{{}}</li>
+        </ul>
         <FilmList />
       </div>
       <div class="shows-container">
@@ -20,6 +27,9 @@ export default {
   components: {
     SeriesList,
     FilmList,
+  },
+  props: {
+    arrMovies: Array,
   },
 };
 </script>
