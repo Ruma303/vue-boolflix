@@ -2,15 +2,16 @@
   <div>
     <div class="col">
       <h1 v-if="arrSeries.length">Serie TV</h1>
-      <ul v-for="objTV in arrSeries"
-      :key="objTV.id">
-        <li>{{objTV.name}}</li>
-        <li>{{objTV.original_name}}</li>
-        <li>{{objTV.language}}</li>
-        <li>{{objTV.vote_average}}</li>
-      </ul>
     </div>
-    <MovieCard />
+    <MovieCard v-for="objTV in arrSeries"
+    :arr-series="arrSeries"
+    @render-series="renderSeries"
+    :key="objTV.id"
+    :name="objTV.name"
+    :original_name="objTV.original_name"
+    :vote_average="objTV.vote_average"
+    :original_language="objTV.original_language"
+     />
   </div>
 </template>
 
@@ -24,6 +25,11 @@ export default {
   },
   props: {
     arrSeries: Array,
+  },
+  methods: {
+    renderSeries(cardInfo) {
+      this.renderSeries = cardInfo;
+    },
   },
 };
 </script>

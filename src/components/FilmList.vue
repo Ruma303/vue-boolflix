@@ -2,15 +2,16 @@
   <div>
     <div class="col">
       <h1 v-if="arrMovies.length">Film</h1>
-      <ul v-for="objMovie in arrMovies"
-      :key="objMovie.id">
-        <li>{{objMovie.title}}</li>
-        <li>{{objMovie.original_title}}</li>
-        <li>{{objMovie.language}}</li>
-        <li>{{objMovie.vote_average}}</li>
-      </ul>
+      <MovieCard v-for="objMovie in arrMovies"
+      :arr-movies="arrMovies"
+      @render-movies="renderMovies"
+      :key="objMovie.id"
+      :title="objMovie.title"
+      :original_title="objMovie.original_title"
+      :vote_average="objMovie.vote_average"
+      :original_language="objMovie.original_language"
+      />
     </div>
-    <MovieCard />
   </div>
 </template>
 
@@ -24,6 +25,11 @@ export default {
   },
   props: {
     arrMovies: Array,
+  },
+  methods: {
+    renderMovies(cardInfo) {
+      this.renderMovies = cardInfo;
+    },
   },
 };
 </script>

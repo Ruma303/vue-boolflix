@@ -1,8 +1,10 @@
 <template>
   <div>
     <HeaderPage @queryChange="search"/>
-    <MainPage :arr-movies="arrMovies"
-    :arr-series="arrSeries"/>
+    <MainPage
+    :arr-movies="arrMovies"
+    :arr-series="arrSeries"
+    />
   </div>
 </template>
 
@@ -61,5 +63,8 @@ export default {
 @import '@/assets/scss/reset';
 body {
   background-color: rgb(67, 67, 67);
+}
+ul {
+  list-style: none;
 }
 </style>
