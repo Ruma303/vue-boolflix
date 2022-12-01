@@ -8,7 +8,7 @@
         <li class="card-o-title card-text">
           Titolo originale: {{original_title}}</li>
         <li class="card-lang card-text">
-          Lingua originale: {{original_language}} <lang-flag :iso='flag' /></li>
+          Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
           Voto: {{vote_average}}</li>
       </ul>
@@ -18,7 +18,7 @@
         <li class="card-o-title card-text">
           Titolo originale: {{original_name}}</li>
         <li class="card-lang card-text">
-          Lingua originale: {{original_language}} <lang-flag :iso='flag' /></li>
+          Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
           Voto: {{vote_average}}</li>
       </ul>
