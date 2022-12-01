@@ -1,8 +1,9 @@
 <template>
   <div>
-    <main class="container-fluid m-0 p-3 d-flex justify-content-center aling-items-center">
-      <div class="films-container">
-        <h1 v-if="arrMovies.length">Film</h1>
+    <main class="container-fluid m-0 p-3 d-flex flex-column
+    justify-content-center aling-items-center gap-3">
+      <div class="movies-container">
+        <!-- <h1 v-if="arrMovies.length">Film</h1> -->
         <ul v-for="objMovie in arrMovies"
         :key="objMovie.id">
           <li>{{objMovie.title}}</li>
@@ -12,19 +13,17 @@
         </ul>
         <!-- <FilmList /> -->
       </div>
-      <div>
-        <h1 v-if="arrSeries.length">Serie TV</h1>
+      <div class="series-container">
+        <!-- <h1 v-if="arrSeries.length">Film</h1> -->
         <ul v-for="objTV in arrSeries"
         :key="objTV.id">
-          <li>{{objTV.title}}</li>
-          <li>{{objTV.original_title}}</li>
+          <li>{{objTV.name}}</li>
+          <li>{{objTV.original_name}}</li>
           <li>{{objTV.language}}</li>
           <li>{{objTV.vote_average}}</li>
         </ul>
+        <!-- <SeriesList /> -->
       </div>
-      <!-- <div class="shows-container">
-        <SeriesList />
-      </div> -->
     </main>
   </div>
 </template>

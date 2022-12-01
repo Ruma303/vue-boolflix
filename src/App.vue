@@ -1,8 +1,8 @@
 <template>
   <div>
     <HeaderPage @queryChange="search"/>
-    <MainPage :propArrMovies="arrMovies"
-    :propArrSeries="arrSeries"/>
+    <MainPage :arrMovies="arrMovies"
+    :arrSeries="arrSeries"/>
   </div>
 </template>
 
