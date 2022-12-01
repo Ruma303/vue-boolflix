@@ -1,7 +1,8 @@
 <template>
   <div class="header container-fluid d-flex justify-content-between aling-items-center px-5 py-2">
     <h1 id="title">Boolflix</h1>
-    <form @submit.prevent="$emit('queryChange', queryString)">
+    <form @submit.prevent="$emit('queryChange', queryString)"
+    class="d-flex justify-content-center aling-items-center py-2">
       <label for="input-search" class="d-flex justify-content-center aling-items-center">
         <input type="text"
         class="px-2"

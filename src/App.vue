@@ -1,8 +1,8 @@
 <template>
   <div>
     <HeaderPage @queryChange="search"/>
-    <MainPage :arrMovies="arrMovies"
-    :arrSeries="arrSeries"/>
+    <MainPage :arr-movies="arrMovies"
+    :arr-series="arrSeries"/>
   </div>
 </template>
 
@@ -59,4 +59,7 @@ export default {
 <style lang="scss">
 @import '~bootstrap/scss/bootstrap';
 @import '@/assets/scss/reset';
+body {
+  background-color: rgb(67, 67, 67);
+}
 </style>
