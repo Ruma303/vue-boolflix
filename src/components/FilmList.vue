@@ -4,7 +4,7 @@
       <h1 v-if="arrMovies.length">Film</h1>
       <MovieCard v-for="objMovie in arrMovies"
       :arr-movies="arrMovies"
-      @render-movies="renderMovies"
+      @moviesReady="moviesInfo"
       :key="objMovie.id"
       :title="objMovie.title"
       :original_title="objMovie.original_title"
@@ -26,14 +26,21 @@ export default {
   props: {
     arrMovies: Array,
   },
+  data() {
+    return {
+      moviesReady: [],
+    };
+  },
   methods: {
-    renderMovies(cardInfo) {
-      this.renderMovies = cardInfo;
+    moviesInfo(cardInfo) {
+      this.cardInfo = cardInfo;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
+h1 {
+  color: white;
+}
 </style>

@@ -5,7 +5,7 @@
     </div>
     <MovieCard v-for="objTV in arrSeries"
     :arr-series="arrSeries"
-    @render-series="renderSeries"
+    @seriesReady="seriesInfo"
     :key="objTV.id"
     :name="objTV.name"
     :original_name="objTV.original_name"
@@ -26,14 +26,21 @@ export default {
   props: {
     arrSeries: Array,
   },
+  data() {
+    return {
+      seriesReady: [],
+    };
+  },
   methods: {
-    renderSeries(cardInfo) {
-      this.renderSeries = cardInfo;
+    seriesInfo(cardInfo) {
+      this.seriesReady = cardInfo;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
+h1 {
+  color: white;
+}
 </style>
