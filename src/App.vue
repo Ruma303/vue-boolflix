@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     search(queryStr) {
-      // chiamata axios
+      // chiamata per i movies
       axios.get(`${this.urlApi}/search/movie`, {
         params: {
           api_key: this.apiKey,
@@ -42,6 +42,19 @@ export default {
           this.arrMovies = axiosResponse.data.results;
           // console.log(this.arrMovies);
         });
+      // chiamata per le series
+      axios.get(`${this.urlApi}/search/tv`, {
+        params: {
+          api_key: this.apiKey,
+          query: queryStr,
+          language: this.lang,
+        },
+      })
+        .then((axiosResponse) => {
+          this.arrSeries = axiosResponse.data.results;
+          // console.log(this.arrSeries);
+        });
+      // chiamata per le copertine
       axios.get(`${this.urlApi}/search/tv`, {
         params: {
           api_key: this.apiKey,

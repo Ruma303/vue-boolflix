@@ -1,9 +1,10 @@
 <template>
   <div class="col mb-3">
-    <div class="container-card card content text-center" style="width: 18rem;">
-      <!-- <img :src="poster" :alt="title" class="figure-img img-fluid p-4"> -->
+    <div class="container-card content text-center" style="width: 18rem;">
       <!-- RENDERING CARDS DEI FILM -->
       <ul class="card-body" v-if="title">
+        <li><img :src="poster_path"
+        :alt="title" class="figure-img img-fluid p-4"></li>
         <li class="card-title card-text">
           Titolo: {{title}}</li>
         <li class="card-o-title card-text">
@@ -15,6 +16,8 @@
       </ul>
       <!-- RENDERING CARDS DELLE SERIE TV -->
       <ul class="card-body" v-else>
+        <li><img :src="poster_path"
+        :alt="name" class="figure-img img-fluid p-4"></li>
         <li class="card-title card-text">
           Titolo: {{name}}</li>
         <li class="card-o-title card-text">
@@ -38,34 +41,22 @@ export default {
     vote_average: Number,
     name: String,
     original_name: String,
+    poster_path: String,
   },
   methods: {
     changeLang() {
       this.flag = this.original_language;
     },
   },
-  // data() {
-  //   return {
-  //     flag: '',
-  //     renderMovies: [],
-  //     renderSeries: [],
-  //   };
-  // },
-  // watch: {
-  //   arrMovies(newValue) {
-  //     console.log('arrMovies watch triggerata', +newValue);
-  //     this.$emit('moviesReady', newValue);
-  //   },
-  //   arrSeries(newValue) {
-  //     console.log('arrMovies watch triggerata', +newValue);
-  //     this.$emit('seriesReady', newValue);
-  //   },
-  // },
 };
 </script>
 
 <style lang="scss" scoped>
 .container-card{
-  height: 20rem;
+  height: 540px;
+  width: 360px;
+} img {
+  height: 100%;
+  width: 100%;
 }
 </style>
