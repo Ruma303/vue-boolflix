@@ -3,52 +3,55 @@
     <div class="container-card text-center mx-0"
     style="width: 18rem;">
       <!-- RENDERING CARDS DEI FILM -->
-      <ul class="card-body text-white m-0" v-if="title">
-        <li><img :src="poster_path"
+      <div class="card-body text-white m-0" v-if="title">
+        <img :src="poster_path"
         :alt="title" class="figure-img img-fluid m-0">
-      </li>
-        <li class="card-title card-text">
-          Titolo: {{title}}</li>
-        <li class="card-o-title card-text">
-          Titolo originale: {{original_title}}</li>
-        <li class="card-lang card-text">
-          Lingua originale: <lang-flag :iso='original_language' /></li>
-        <li class="card-vote card-text">
-          Voto: {{convertScore(score).score}}</li>
-        <li class="card-vote card-text">
-        <font-awesome-icon
-        v-for="i in convertScore(score).score"
-        :key="i.score"
-        icon="fa-solid fa-star" :style="{color:'yellow'}"/>
-        <font-awesome-icon
-        v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
-        :key="i.score"
-        icon="fa-regular fa-star" :style="{color:'yellow'}"/>
-        </li>
-        <li class="card-text overview">Panoramica: {{reduceOverview(overview)}}</li>
-      </ul>
+        <ul class="card-text">
+          <li class="card-title ">
+            Titolo: {{title}}</li>
+          <li class="card-o-title ">
+            Titolo originale: {{original_title}}</li>
+          <li class="card-lang ">
+            Lingua originale: <lang-flag :iso='original_language' /></li>
+          <li class="card-vote ">
+            Voto: {{convertScore(score).score}}</li>
+          <li class="card-vote ">
+          <font-awesome-icon
+          v-for="i in convertScore(score).score"
+          :key="i.score"
+          icon="fa-solid fa-star" :style="{color:'yellow'}"/>
+          <font-awesome-icon
+          v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
+          :key="i.score"
+          icon="fa-regular fa-star" :style="{color:'yellow'}"/>
+          </li>
+          <li class=" overview">Panoramica: {{reduceOverview(overview)}}</li>
+        </ul>
+      </div>
       <!-- RENDERING CARDS DELLE SERIE TV -->
-      <ul class="card-body text-white m-0" v-else>
-        <li><img :src="poster_path"
-        :alt="name" class="figure-img img-fluid m-0"></li>
-        <li class="card-title card-text">
-          Titolo: {{name}}</li>
-        <li class="card-o-title card-text">
-          Titolo originale: {{original_name}}</li>
-        <li class="card-lang card-text">
-          Lingua originale: <lang-flag :iso='original_language' /></li>
-        <li class="card-vote card-text">
-        <font-awesome-icon
-        v-for="i in convertScore(score).score"
-        :key="i.score"
-        icon="fa-solid fa-star" :style="{color:'yellow'}"/>
-        <font-awesome-icon
-        v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
-        :key="i.score"
-        icon="fa-regular fa-star" :style="{color:'yellow'}"/>
-        </li>
-        <li class="card-text overview">Panoramica: {{reduceOverview(overview)}}</li>
-      </ul>
+      <div class="card-body text-white m-0" v-else>
+        <img :src="poster_path"
+        :alt="name" class="figure-img img-fluid m-0">
+        <ul class="card-text">
+          <li class="card-title ">
+            Titolo: {{name}}</li>
+          <li class="card-o-title ">
+            Titolo originale: {{original_name}}</li>
+          <li class="card-lang ">
+            Lingua originale: <lang-flag :iso='original_language' /></li>
+          <li class="card-vote ">
+          <font-awesome-icon
+          v-for="i in convertScore(score).score"
+          :key="i.score"
+          icon="fa-solid fa-star" :style="{color:'yellow'}"/>
+          <font-awesome-icon
+          v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
+          :key="i.score"
+          icon="fa-regular fa-star" :style="{color:'yellow'}"/>
+          </li>
+          <li class=" overview">Panoramica: {{reduceOverview(overview)}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -76,8 +79,8 @@ export default {
       return { score: Math.ceil((score * maxScore) / originalScore), maxScore };
     },
     reduceOverview(overview) {
-      if (overview.length > 250) {
-        return `${overview.slice(0, 250)}...`;
+      if (overview.length > 150) {
+        return `${overview.slice(0, 150)}...`;
       }
       return overview;
     },
@@ -98,21 +101,22 @@ export default {
   height: 100%;
   width: 100%;
 }
+.container-card img{
+  position: relative;
+  z-index: 4;
+}
 .card-text{
-  display: none;
+  height: 100%;
+  width: 100%;
   padding: .5rem;
-}
-.overview{
-  overflow-y: auto;
-}
-.container-card:hover .card-text{
-  display: block;
-}
-.container-card:hover {
-  background-color: black;
-  padding-top: 2rem;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .container-card:hover img{
-  display: none;
+    filter:brightness(20%);
+    z-index:2;
 }
 </style>
