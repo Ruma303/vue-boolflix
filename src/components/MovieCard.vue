@@ -1,6 +1,6 @@
 <template>
-  <div class="col mb-3 mx-0 d-flex justify-content-center aling-items-center px-0">
-    <div class="container-card content text-center mx-0"
+  <div class="col mb-5 d-flex justify-content-center aling-items-center px-0">
+    <div class="container-card text-center mx-0"
     style="width: 18rem;">
       <!-- RENDERING CARDS DEI FILM -->
       <ul class="card-body text-white m-0" v-if="title">
@@ -25,6 +25,7 @@
         :key="i.score"
         icon="fa-regular fa-star" :style="{color:'yellow'}"/>
         </li>
+        <li class="card-text overview">Panoramica: {{reduceOverview(overview)}}</li>
       </ul>
       <!-- RENDERING CARDS DELLE SERIE TV -->
       <ul class="card-body text-white m-0" v-else>
@@ -46,6 +47,7 @@
         :key="i.score"
         icon="fa-regular fa-star" :style="{color:'yellow'}"/>
         </li>
+        <li class="card-text overview">Panoramica: {{reduceOverview(overview)}}</li>
       </ul>
     </div>
   </div>
@@ -62,6 +64,7 @@ export default {
     name: String,
     original_name: String,
     poster_path: String,
+    overview: String,
   },
   methods: {
     changeLang() {
@@ -72,6 +75,12 @@ export default {
       const originalScore = 10;
       return { score: Math.ceil((score * maxScore) / originalScore), maxScore };
     },
+    reduceOverview(overview) {
+      if (overview.length > 250) {
+        return `${overview.slice(0, 250)}...`;
+      }
+      return overview;
+    },
   },
 };
 </script>
@@ -81,6 +90,8 @@ export default {
   height: 430px;
   width: 342px;
   cursor:pointer;
+  perspective: 1000px;
+  background-color: transparent;
 }
 .container-card ul,
 .container-card img{
@@ -89,6 +100,10 @@ export default {
 }
 .card-text{
   display: none;
+  padding: .5rem;
+}
+.overview{
+  overflow-y: auto;
 }
 .container-card:hover .card-text{
   display: block;

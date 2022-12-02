@@ -12,6 +12,7 @@
       :original_title="objMovie.original_title"
       :score="objMovie.vote_average"
       :original_language="objMovie.original_language"
+      :overview="objMovie.overview"
       />
     </div>
   </template>

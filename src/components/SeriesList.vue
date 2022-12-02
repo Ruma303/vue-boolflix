@@ -12,6 +12,7 @@
     :original_name="objTV.original_name"
     :score="objTV.vote_average"
     :original_language="objTV.original_language"
+    :overview="objTV.overview"
     />
   </div>
 </template>
