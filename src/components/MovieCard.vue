@@ -5,7 +5,8 @@
       <!-- RENDERING CARDS DEI FILM -->
       <ul class="card-body text-white m-0" v-if="title">
         <li><img :src="poster_path"
-        :alt="title" class="figure-img img-fluid m-0"></li>
+        :alt="title" class="figure-img img-fluid m-0">
+      </li>
         <li class="card-title card-text">
           Titolo: {{title}}</li>
         <li class="card-o-title card-text">
@@ -14,6 +15,16 @@
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
           Voto: {{convertScore(score).score}}</li>
+        <li class="card-vote card-text">
+        <font-awesome-icon
+        v-for="i in convertScore(score).score"
+        :key="i.score"
+        icon="fa-solid fa-star" :style="{color:'yellow'}"/>
+        <font-awesome-icon
+        v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
+        :key="i.score"
+        icon="fa-regular fa-star" :style="{color:'yellow'}"/>
+        </li>
       </ul>
       <!-- RENDERING CARDS DELLE SERIE TV -->
       <ul class="card-body text-white m-0" v-else>
@@ -26,7 +37,15 @@
         <li class="card-lang card-text">
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
-          Voto: {{convertScore(score).score}}</li>
+        <font-awesome-icon
+        v-for="i in convertScore(score).score"
+        :key="i.score"
+        icon="fa-solid fa-star" :style="{color:'yellow'}"/>
+        <font-awesome-icon
+        v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
+        :key="i.score"
+        icon="fa-regular fa-star" :style="{color:'yellow'}"/>
+        </li>
       </ul>
     </div>
   </div>
