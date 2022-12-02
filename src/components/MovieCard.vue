@@ -13,7 +13,7 @@
         <li class="card-lang card-text">
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
-          Voto: {{convertScore}}</li>
+          Voto: {{convertScore(score).score}}</li>
       </ul>
       <!-- RENDERING CARDS DELLE SERIE TV -->
       <ul class="card-body text-white m-0" v-else>
