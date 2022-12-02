@@ -1,10 +1,11 @@
 <template>
-  <div class="col mb-3">
-    <div class="container-card content text-center" style="width: 18rem;">
+  <div class="col mb-3 mx-0 d-flex justify-content-center aling-items-center px-0">
+    <div class="container-card content text-center mx-0"
+    style="width: 18rem;">
       <!-- RENDERING CARDS DEI FILM -->
-      <ul class="card-body" v-if="title">
+      <ul class="card-body text-white m-0" v-if="title">
         <li><img :src="poster_path"
-        :alt="title" class="figure-img img-fluid p-4"></li>
+        :alt="title" class="figure-img img-fluid m-0"></li>
         <li class="card-title card-text">
           Titolo: {{title}}</li>
         <li class="card-o-title card-text">
@@ -12,12 +13,12 @@
         <li class="card-lang card-text">
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
-          Voto: {{vote_average}}</li>
+          Voto: {{score}}</li>
       </ul>
       <!-- RENDERING CARDS DELLE SERIE TV -->
-      <ul class="card-body" v-else>
+      <ul class="card-body text-white m-0" v-else>
         <li><img :src="poster_path"
-        :alt="name" class="figure-img img-fluid p-4"></li>
+        :alt="name" class="figure-img img-fluid m-0"></li>
         <li class="card-title card-text">
           Titolo: {{name}}</li>
         <li class="card-o-title card-text">
@@ -25,7 +26,7 @@
         <li class="card-lang card-text">
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
-          Voto: {{vote_average}}</li>
+          Voto: {{score}}</li>
       </ul>
     </div>
   </div>
@@ -38,14 +39,24 @@ export default {
     title: String,
     original_title: String,
     original_language: String,
-    vote_average: Number,
+    score: Number,
     name: String,
     original_name: String,
     poster_path: String,
   },
+  data() {
+    return {
+      voteAverage: '',
+    };
+  },
   methods: {
     changeLang() {
       this.flag = this.original_language;
+    },
+    convertScore(score) {
+      const maxScore = 5;
+      const originalScore = 10;
+      return { score: Math.ceil((score * maxScore) / originalScore), maxScore };
     },
   },
 };
@@ -53,10 +64,26 @@ export default {
 
 <style lang="scss" scoped>
 .container-card{
-  height: 540px;
-  width: 360px;
-} img {
+  height: 430px;
+  width: 342px;
+  cursor:pointer;
+}
+.container-card ul,
+.container-card img{
   height: 100%;
   width: 100%;
+}
+.card-text{
+  display: none;
+}
+.container-card:hover .card-text{
+  display: block;
+}
+.container-card:hover {
+  background-color: black;
+  padding-top: 2rem;
+}
+.container-card:hover img{
+  display: none;
 }
 </style>

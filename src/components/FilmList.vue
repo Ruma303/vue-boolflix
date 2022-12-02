@@ -5,12 +5,12 @@
       <h1 v-if="arrMovies.length">Film</h1>
       <MovieCard v-for="objMovie in arrMovies"
       :arr-movies="arrMovies"
-      :poster_path="`http://image.tmdb.org/t/p/w500/${objMovie.poster_path}`"
+      :poster_path="`http://image.tmdb.org/t/p/w342/${objMovie.poster_path}`"
       :alt="objMovie.title"
       :key="objMovie.id"
       :title="objMovie.title"
       :original_title="objMovie.original_title"
-      :vote_average="objMovie.vote_average"
+      :score="objMovie.vote_average"
       :original_language="objMovie.original_language"
       />
     </div>
