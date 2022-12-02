@@ -10,7 +10,7 @@
       :key="objMovie.id"
       :title="objMovie.title"
       :original_title="objMovie.original_title"
-      :score="objMovie.vote_average"
+      :score="objMovie.score"
       :original_language="objMovie.original_language"
       />
     </div>

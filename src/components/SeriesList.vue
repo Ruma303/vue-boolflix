@@ -10,7 +10,7 @@
     :key="objTV.id"
     :name="objTV.name"
     :original_name="objTV.original_name"
-    :score="objTV.vote_average"
+    :score="objTV.score"
     :original_language="objTV.original_language"
     />
   </div>

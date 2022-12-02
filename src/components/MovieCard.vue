@@ -13,7 +13,7 @@
         <li class="card-lang card-text">
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
-          Voto: {{score}}</li>
+          Voto: {{convertScore}}</li>
       </ul>
       <!-- RENDERING CARDS DELLE SERIE TV -->
       <ul class="card-body text-white m-0" v-else>
@@ -26,7 +26,7 @@
         <li class="card-lang card-text">
           Lingua originale: <lang-flag :iso='original_language' /></li>
         <li class="card-vote card-text">
-          Voto: {{score}}</li>
+          Voto: {{convertScore(score).score}}</li>
       </ul>
     </div>
   </div>
@@ -43,11 +43,6 @@ export default {
     name: String,
     original_name: String,
     poster_path: String,
-  },
-  data() {
-    return {
-      voteAverage: '',
-    };
   },
   methods: {
     changeLang() {
