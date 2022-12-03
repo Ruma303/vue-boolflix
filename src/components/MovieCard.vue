@@ -7,31 +7,30 @@
         <img :src="poster_path"
         :alt="title" class="figure-img img-fluid m-0">
         <ul class="card-text">
-          <li class="card-title">
-            Titolo: {{title}}</li>
-          <li class="card-o-title">
-            Titolo originale: {{original_title}}</li>
-          <li class="card-lang">
-            Lingua originale: <lang-flag :iso='original_language' /></li>
-          <li class="card-vote">
-            Voto: {{convertScore(score).score}}</li>
-          <li class="card-vote">
-          <font-awesome-icon
-          v-for="i in convertScore(score).score"
-          :key="i.score"
-          icon="fa-solid fa-star" :style="{color:'yellow'}"/>
-          <font-awesome-icon
-          v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
-          :key="i.score"
-          icon="fa-regular fa-star" :style="{color:'yellow'}"/>
-          </li>
+          <li>Titolo: <span class="inside-text">{{title}}</span></li>
+          <li>Titolo originale: <span class="inside-text">{{original_title}}</span></li>
+          <li>Lingua originale: <lang-flag :iso='original_language' /></li>
+          <li>Voto: <span class="inside-text">
+            {{convertScore(score).score}}</span></li>
+          <li>
+            <font-awesome-icon
+            v-for="i in convertScore(score).score"
+            :key="i.score"
+            icon="fa-solid fa-star" :style="{color:'yellow'}"/>
+            <font-awesome-icon
+            v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
+            :key="i.score"
+            icon="fa-regular fa-star" :style="{color:'yellow'}"/>
+            </li>
           <li>Generi:
             <span
           v-for="genre in reduceMoviesGenres(arrMoviesGenres)"
-          :key="genre.id">
+          :key="genre.id"
+          class="inside-text">
           {{genre.name}}, </span>
           </li>
-          <li class="overview">Panoramica: {{reduceOverview(overview)}}</li>
+          <li>Panoramica: <span class="inside-text">
+            {{reduceOverview(overview)}}</span></li>
         </ul>
       </div>
       <!-- RENDERING CARDS DELLE SERIE TV -->
@@ -39,29 +38,30 @@
         <img :src="poster_path"
         :alt="name" class="figure-img img-fluid m-0">
         <ul class="card-text">
-          <li class="card-title">
-            Titolo: {{name}}</li>
-          <li class="card-o-title">
-            Titolo originale: {{original_name}}</li>
-          <li class="card-lang">
-            Lingua originale: <lang-flag :iso='original_language' /></li>
-          <li class="card-vote">
-          <font-awesome-icon
-          v-for="i in convertScore(score).score"
-          :key="i.score"
-          icon="fa-solid fa-star" :style="{color:'yellow'}"/>
-          <font-awesome-icon
-          v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
-          :key="i.score"
-          icon="fa-regular fa-star" :style="{color:'yellow'}"/>
-          </li>
+          <li>Titolo: <span class="inside-text">
+            {{name}}</span></li>
+          <li>Titolo originale: <span class="inside-text">
+            {{original_name}}</span></li>
+          <li>Lingua originale: <lang-flag :iso='original_language' /></li>
+          <li>
+            <font-awesome-icon
+            v-for="i in convertScore(score).score"
+            :key="i.score"
+            icon="fa-solid fa-star" :style="{color:'yellow'}"/>
+            <font-awesome-icon
+            v-for="i in (convertScore(score).maxScore - convertScore(score).score)"
+            :key="i.score"
+            icon="fa-regular fa-star" :style="{color:'yellow'}"/>
+            </li>
           <li>Generi:
             <span
           v-for="genre in reduceSeriesGenres(arrSeriesGenres)"
-          :key="genre.id">
+          :key="genre.id"
+          class="inside-text">
           {{genres.name}}, </span>
           </li>
-          <li class="overview">Panoramica: {{reduceOverview(overview)}}</li>
+          <li>Panoramica:<span class="inside-text">
+            {{reduceOverview(overview)}}</span></li>
         </ul>
       </div>
     </div>
@@ -93,15 +93,15 @@ export default {
       return { score: Math.ceil((score * maxScore) / originalScore), maxScore };
     }, // Riduzione caratteri panoramica
     reduceOverview(overview) {
-      if (overview.length > 150) {
-        return `${overview.slice(0, 150)}...`;
+      if (overview.length > 100) {
+        return `${overview.slice(0, 100)}...`;
       }
       return overview;
     }, // Riduzione caratteri Generi Movies AL MOMENTO NON FUNZIONANTE
     reduceMoviesGenres(arrMoviesGenres) {
-      if (arrMoviesGenres.length > 50) {
+      if (arrMoviesGenres.length > 30) {
         console.log(arrMoviesGenres);
-        return `${arrMoviesGenres.slice(0, 10)}...`;
+        return `${arrMoviesGenres.slice(0, 30)}...`;
       }
       return arrMoviesGenres;
     }, // Riduzione caratteri Serie TV AL MOMENTO NON FUNZIONANTE
@@ -146,5 +146,8 @@ export default {
 .container-card:hover img{
     filter:brightness(20%);
     z-index:2;
+}
+.inside-text {
+  font-size: .8rem;
 }
 </style>
