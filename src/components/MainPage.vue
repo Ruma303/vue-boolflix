@@ -2,8 +2,12 @@
   <div>
     <main class="container-fluid m-0 p-3 d-flex flex-column
     justify-content-center aling-items-center gap-3">
-        <FilmList :arr-movies="arrMovies"/>
-        <SeriesList :arr-series="arrSeries"/>
+        <FilmList
+        :arr-movies="arrMovies"
+        :arrMoviesGenres="arrMoviesGenres"/>
+        <SeriesList
+        :arr-series="arrSeries"
+        :arrSeriesGenres="arrSeriesGenres"/>
     </main>
   </div>
 </template>
@@ -21,6 +25,8 @@ export default {
   props: {
     arrMovies: Array,
     arrSeries: Array,
+    arrMoviesGenres: Array,
+    arrSeriesGenres: Array,
   },
 };
 </script>

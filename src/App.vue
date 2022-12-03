@@ -4,6 +4,8 @@
     <MainPage
     :arr-movies="arrMovies"
     :arr-series="arrSeries"
+    :arrMoviesGenres="arrMoviesGenres"
+    :arrSeriesGenres="arrSeriesGenres"
     />
   </div>
 </template>
@@ -26,6 +28,8 @@ export default {
       lang: 'it-IT',
       arrMovies: [],
       arrSeries: [],
+      arrMoviesGenres: [],
+      arrSeriesGenres: [],
     };
   },
   methods: {
@@ -54,8 +58,8 @@ export default {
           this.arrSeries = axiosResponse.data.results;
           // console.log(this.arrSeries);
         });
-      // chiamata per le copertine
-      axios.get(`${this.urlApi}/search/tv`, {
+      // chiamata per GENERI FILM
+      axios.get(`${this.urlApi}/genre/movie/list`, {
         params: {
           api_key: this.apiKey,
           query: queryStr,
@@ -63,8 +67,20 @@ export default {
         },
       })
         .then((axiosResponse) => {
-          this.arrSeries = axiosResponse.data.results;
-          // console.log(this.arrSeries);
+          this.arrMoviesGenres = axiosResponse.data.genres;
+          console.log(this.arrMoviesGenres);
+        });
+      // chiamata per GENERI SERIES
+      axios.get(`${this.urlApi}/genre/tv/list`, {
+        params: {
+          api_key: this.apiKey,
+          query: queryStr,
+          language: this.lang,
+        },
+      })
+        .then((axiosResponse) => {
+          this.arrSeriesGenres = axiosResponse.data.genres;
+          console.log(this.arrSeriesGenres);
         });
     },
   },

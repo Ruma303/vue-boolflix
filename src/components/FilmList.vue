@@ -5,6 +5,7 @@
       <h1 v-if="arrMovies.length">Film</h1>
       <MovieCard v-for="objMovie in arrMovies"
       :arr-movies="arrMovies"
+      :arrMoviesGenres="arrMoviesGenres"
       :poster_path="`http://image.tmdb.org/t/p/w342/${objMovie.poster_path}`"
       :alt="objMovie.title"
       :key="objMovie.id"
@@ -13,6 +14,7 @@
       :score="objMovie.vote_average"
       :original_language="objMovie.original_language"
       :overview="objMovie.overview"
+      :genres="objMovie.arrMoviesGenres"
       />
     </div>
   </template>
@@ -27,6 +29,7 @@ export default {
   },
   props: {
     arrMovies: Array,
+    arrMoviesGenres: Array,
   },
 };
 </script>

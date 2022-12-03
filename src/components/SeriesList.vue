@@ -5,6 +5,7 @@
     <h1 v-if="arrSeries.length">Serie TV</h1>
     <MovieCard v-for="objTV in arrSeries"
     :arr-series="arrSeries"
+    :arrSeriesGenres="arrSeriesGenres"
     :poster_path="`http://image.tmdb.org/t/p/w342/${objTV.poster_path}`"
     :alt="objTV.name"
     :key="objTV.id"
@@ -13,6 +14,7 @@
     :score="objTV.vote_average"
     :original_language="objTV.original_language"
     :overview="objTV.overview"
+    :genres="objTV.arrSeriesGenres"
     />
   </div>
 </template>
@@ -27,6 +29,7 @@ export default {
   },
   props: {
     arrSeries: Array,
+    arrSeriesGenres: Array,
   },
 };
 </script>
